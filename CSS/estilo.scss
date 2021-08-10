@@ -1,0 +1,181 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+	text-decoration: none;
+	list-style-type: none;
+}
+
+$fondo: linear-gradient(to bottom, rgb(12, 143, 12),rgb(195, 230, 187));
+$color: black;
+
+header{
+    padding: 20px;
+    background-image: $fondo;
+}
+
+.navegador{
+    &__lista{
+        list-style-type: none;
+	    margin: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    &__item{
+        margin: 10px;
+        padding: 5px;
+        display: inline-block;
+    }
+
+    &__link{
+        text-decoration: none;
+    }
+}
+
+@mixin tamanios($alto, $ancho, $margen){
+    height: $alto;
+    width: $ancho;
+    margin: $margen;
+}
+
+.imagen{
+    @include tamanios(200px, 200px, 0)
+}
+
+div{
+    margin-top: 10px;
+    margin-bottom: 30px;
+    flex-grow: 1; 
+}
+
+.principal{
+    display: flex;
+    flex-direction: column;
+    color: $color;
+    font-weight: bold;
+    text-align: center;
+    text-transform:uppercase;
+    line-height: 2;
+    @include tamanios(700px, 90%, 20px 100px 20px 100px)
+}
+
+.titulo{
+    font-size: xx-large;
+    height: 30%;
+    width: 90%;
+    justify-self: center;
+    align-self: center;
+}
+
+#carouselExampleDark{
+    @extend .principal;
+    .imagen{
+        height: 500px;
+    }
+    .carousel-caption{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        color: green;
+    }
+}
+
+
+#grillaSeccion{
+    @extend .principal;
+    display: grid;
+    height: 100%;
+    width: 90%;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "area1 area2"
+                         "area1 area3"
+                         "area1 area4"
+                         "area1 area5";
+    justify-items:center;
+    align-items:center;
+}
+
+.areaUno{
+    border: solid $color 2px;
+    grid-area: area1;
+    height: 90%;
+    width: 90%;
+    grid-row: auto;
+    grid-column: auto;
+}
+
+.areaDos{
+    @extend .areaUno;
+    grid-area: area2;
+}
+
+.areaTres{
+    @extend .areaUno;
+    grid-area: area3;
+}
+
+.areaCuatro{
+    @extend .areaUno;
+    grid-area: area4;
+}
+
+.areaCinco{
+    @extend .areaUno;
+    grid-area: area5;
+}
+
+.alinearPie{
+    padding: 20px;
+    height: 100%;
+    color: white;
+    font-size: small;
+    background-image: $fondo;
+    text-align: right;
+    text-transform: uppercase;
+    color: $color;
+
+}
+
+@media only screen and (max-width:600px){
+    #grillaSeccion{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas: "area1"
+                             "area2"
+                             "area3"
+                             "area4"
+                             "area5";
+
+    }
+    .areaUno{
+        grid-area: area1;
+    }
+    .areaDos{
+        grid-area: area2;
+    }
+    .areaTres{
+        grid-area: area3;
+    }
+    .areaCuatro{
+        grid-area: area4;
+    }
+    .areaCinco{
+        grid-area: area5;
+    }
+}
+
+@media only screen and (min-width:600px){
+    .titulo{
+        color: rgb(34, 33, 33);
+    }
+}
+
+@media only screen and (min-width:992px){
+    .titulo{
+        color: rgb(44, 43, 43);
+    }
+}
